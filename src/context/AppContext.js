@@ -25,22 +25,11 @@ const AppProvider = props => {
 		})
 	}
 
-	const handleDone = (id) => {
+	const handleToggle = (id, isCheck) => {
 		setData((prevState) => {
 			return prevState.map(item => {
 				if (item.id === id) {
-					item.complete = true
-				}
-				return item
-			})
-		})
-	}
-
-	const handleCancel = (id) => {
-		setData((prevState) => {
-			return prevState.map(item => {
-				if (item.id === id) {
-					item.complete = false
+					item.complete = isCheck
 				}
 				return item
 			})
@@ -54,7 +43,7 @@ const AppProvider = props => {
 	}
 
 	return (
-		<Provider value={{ handleAdd, handleDone, handleCancel, handleRemove, data }}>
+		<Provider value={{ handleAdd, handleToggle, handleRemove, data }}>
 			{props.children}
 		</Provider>
 	)
