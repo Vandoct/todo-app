@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react';
+import InputTodo from './components/todo/InputTodo';
+import ListTodo from './components/todo/ListTodo';
+import { AppContext } from './context/AppContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	const { data } = useContext(AppContext)
+
+	return (
+		<div className="mx-auto h-screen bg-gray-800">
+			<div className="grid grid-flow-row">
+				<InputTodo />
+				<ListTodo data={data} />
+			</div>
+		</div>
+	);
 }
 
 export default App;
