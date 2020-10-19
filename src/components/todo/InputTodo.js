@@ -3,11 +3,11 @@ import { AppContext } from '../../context/AppContext'
 
 const InputTodo = () => {
 	const [todo, setTodo] = useState('')
-	const { handleAdd } = useContext(AppContext)
+	const { dispatch } = useContext(AppContext)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		handleAdd(todo)
+		dispatch({ type: 'ADD_TODO', payload: todo })
 		setTodo('')
 	}
 

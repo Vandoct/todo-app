@@ -4,13 +4,13 @@ import ListTodo from './components/todo/ListTodo';
 import { AppContext } from './context/AppContext';
 
 const App = () => {
-	const { data } = useContext(AppContext)
+	const { state } = useContext(AppContext)
 
 	return (
 		<div className="mx-auto h-screen bg-gray-800">
 			<div className="grid grid-flow-row">
 				<InputTodo />
-				<ListTodo data={data} />
+				<ListTodo data={state.data} />
 			</div>
 		</div>
 	);

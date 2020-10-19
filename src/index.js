@@ -6,11 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import './tailwind.output.css';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<AppProvider>
-			<App />
-		</AppProvider>
-	</React.StrictMode>,
+	<AppProvider>
+		<App />
+	</AppProvider>,
 	document.getElementById('root')
 );
 
