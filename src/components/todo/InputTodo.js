@@ -1,13 +1,11 @@
-import React, { useContext, useState } from 'react'
-import { AppContext } from '../../context/AppContext'
+import React, { useState } from 'react'
 
-const InputTodo = () => {
+const InputTodo = ({ isLoading, onSubmit }) => {
 	const [todo, setTodo] = useState('')
-	const { dispatch } = useContext(AppContext)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch({ type: 'ADD_TODO', payload: todo })
+		onSubmit(todo)
 		setTodo('')
 	}
 
@@ -21,6 +19,8 @@ const InputTodo = () => {
 						name="todo"
 						placeholder="What needs to be done?"
 						value={todo}
+						disabled={isLoading}
+						required={true}
 						onChange={e => setTodo(e.target.value)} />
 					<button
 						className="flex-shrink-0 bg-teal-700 hover:bg-teal-900 border-teal-700 hover:border-teal-900 text-sm border-4 text-white py-1 px-2 rounded"

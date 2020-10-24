@@ -4,6 +4,7 @@
 
 @layer components {
 	.my-custom {
-		@apply max-w-md mx-auto flex p-6 bg-gray-100 mt-10 rounded-full shadow-xl;
+		background: #f00;
+		@apply max-w-md mx-auto flex p-6 mt-10 rounded-full shadow-xl;
 	}
 }

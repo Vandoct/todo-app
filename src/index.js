@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
-import { AppProvider } from './context/AppContext';
+import { store } from './redux/store';
 import * as serviceWorker from './serviceWorker';
 import './tailwind.output.css';
 
 ReactDOM.render(
-	<AppProvider>
+	<Provider store={store}>
 		<App />
-	</AppProvider>,
+	</Provider>,
 	document.getElementById('root')
 );
 
