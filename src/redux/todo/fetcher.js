@@ -35,9 +35,9 @@ export const addTodo = todo => {
 			todo: todo,
 			complete: false
 		}, (error) => {
-			if (error == null) {
-				dispatch(hideLoading())
-			} else {
+			dispatch(hideLoading())
+
+			if (error !== null) {
 				dispatch(showError(error.message))
 			}
 		})
@@ -49,25 +49,30 @@ export const removeTodo = id => {
 		dispatch(showLoading())
 
 		db.ref(`/todos/${id}`).remove((error) => {
-			if (error == null) {
-				dispatch(hideLoading())
-			} else {
+			dispatch(hideLoading())
+
+			if (error !== null) {
 				dispatch(showError(error.message))
 			}
 		})
 	}
 }
 
-export const toggleTodo = (id, isComplete) => {
+export const toggleTodo = (id) => {
 	return dispatch => {
 		dispatch(showLoading())
 
-		db.ref(`/todos/${id}`).update({
-			complete: isComplete
-		}, (error) => {
-			if (error == null) {
-				dispatch(hideLoading())
-			} else {
+		db.ref(`/todos/${id}`).transaction(currentData => {
+			if (currentData !== null) {
+				return {
+					...currentData,
+					complete: !currentData.complete
+				}
+			}
+		}, (error, _committed, _snapshot) => {
+			dispatch(hideLoading())
+
+			if (error) {
 				dispatch(showError(error.message))
 			}
 		})
