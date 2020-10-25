@@ -1,1 +1,2 @@
-export { addTodo, removeTodo, toggleTodo } from './todo/fetcher';
+export { addTodo, cleanup, getTodo, removeTodo, toggleTodo } from './todo/fetcher';
+

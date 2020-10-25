@@ -1,7 +1,8 @@
-import { HIDE_LOADING, SHOW_LOADING } from "./types";
+import { HIDE_LOADING, SHOW_ERROR, SHOW_LOADING } from "./types";
 
 const initialState = {
-	isLoading: false
+	isLoading: false,
+	error: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false
+			}
+		}
+		case SHOW_ERROR: {
+			return {
+				...state,
+				error: action.payload
 			}
 		}
 		default: return state

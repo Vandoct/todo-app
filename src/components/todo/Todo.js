@@ -11,7 +11,7 @@ const Todo = ({ item, onToggle, onRemove }) => {
 						className="col-span-1 self-center"
 						type="checkbox"
 						checked={item.complete}
-						onChange={() => onToggle(item.id)} />
+						onChange={() => onToggle(item.id, !item.complete)} />
 					<p className={`col-span-10 ${isLineTrough}`}>{item.todo}</p>
 					<div className="col-span-1">
 						<span
