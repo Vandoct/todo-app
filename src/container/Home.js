@@ -16,7 +16,7 @@ const Home = () => {
 		return () => {
 			cleanup()
 		}
-	}, [])
+	}, [dispatch])
 
 	const handleSubmit = todo => {
 		dispatch(addTodo(todo))
